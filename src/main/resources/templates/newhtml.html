@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+    </head>
+    <body>
+             
+       <p id="txt"  contenteditable="true" th:if="${article!=null}" th:text="${article.description}"></p>
+       <p id="htext" hidden='true' th:text='${article.id}'></p>
+       <button  th:onclick="save()">Save</button>
+       <script th:inline="javascript">
+   
+         function save(){
+           var n = document.getElementById("htxt").value;
+           console.log("attention");
+           var s = document.getElementById("txt").textContent;
+           var response = {
+           id : n,
+           text : s
+           };
+           fetch('/saveArticle', {
+           method: 'POST',
+           headers: {
+           'Content-Type': 'application/json; charset=utf-8'
+           },
+           body: JSON.stringify(response)
+           });
+
+           };
+        </script> 
+    </body>
+</html>

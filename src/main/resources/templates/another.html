@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Adding Page</title>
+        <style>
+           body {background-color: lemonchiffon; position: relative; top: 7.0em;}
+           input {background-color: aliceblue;}
+           .add{background: lightgrey;  
+            color: black; 
+            font-size: 9pt;
+           font-weight: bold;
+           width: 50px;
+           }
+           .wrapper{width: 1000px; margin: -70px 0 auto; text-align: center;}
+           .topText {text-align:  center; font-size: 14pt; font-weight:bold}
+        </style> 
+    </head>
+   
+    <body>
+        <div class='wrapper'>
+<form action="#" th:action="@{/enter}" th:object="${form}" method="POST">
+        <p class='topText'>Введите данные животного:</p>
+        <p th:text="${msg}">jjj</p>
+        <p>Введите данные владельца животного:</p>
+        <div class='wrapper1'>
+            <td><input type="text" th:field="*{petOwner}" placeholder="Введите имя владельца животного" required></td>
+        <!--<td th:if="${#fields.hasErrors('petOwner')}" th:errors="*{petOwner}">Введите имя русскими буквами</td>-->
+        <input type="tel" th:field="*{ownerPhone}" placeholder="Введите телефон владельца животного" required>
+         <!--<td th:if="${#fields.hasErrors('ownerPhone')}" th:errors="*{ownerPhone}"><br>Телефон должен состоять из 11 цифр</td>-->   
+        </div>
+        <div class='wrapper666'>
+           <td th:if="${#fields.hasErrors('petOwner')}" th:errors="*{petOwner}">Введите имя русскими буквами</td> 
+           <td th:if="${#fields.hasErrors('ownerPhone')}" th:errors="*{ownerPhone}">'  'Телефон должен состоять из 11 цифр</td>
+            </div>
+       <p >Введите данные первого животного:</p>
+        <div class='wrapper2'>
+        <input type="text" placeholder="Введите имя животного" th:field="*{petName1}">
+            
+        <input type="number" placeholder="Введите возраст животного" th:field="*{petAge1}" min="1">
+             
+        <input type="text" placeholder="Введите диагноз животного" th:field="*{petDiagnosis1}">
+        </div>
+       <div class='wrapper777'>
+       <td th:if="${#fields.hasErrors('petName1')}" th:errors="*{petName1}">Введите имя русскими буквами</td>
+       <td th:if="${#fields.hasErrors('petAge1')}" th:errors="*{petAge1}">Возраст должен быть больше 0</td>
+       </div>  
+        <p >Введите данные второго животного:</p>
+        <div class='wrapper3'>
+        <input type="text" placeholder="Введите имя животного" th:field="*{petName2}" >
+        <input type="number" placeholder="Введите возраст животного" th:field="*{petAge2}" min="1">
+        <input type="text" placeholder="Введите диагноз животного" th:field="*{petDiagnosis2}">
+        </div>
+        <div class='wrapper888'>
+          <td th:if="${#fields.hasErrors('petName2')}" th:errors="*{petName2}">Введите имя русскими буквами</td>
+       <td th:if="${#fields.hasErrors('petAge2')}" th:errors="*{petAge2}">Возраст должен быть больше 0</td>   
+         </div>    
+        <p >Введите данные третьего животного:</p>
+        <div class='wrapper4'>
+        <input type="text" placeholder="Введите имя животного" th:field="*{petName3}" name="petName3" id="petName3" >
+        <input type="number" placeholder="Введите возраст животного" th:field="*{petAge3}"min="1">
+        <input type="text" placeholder="Введите диагноз животного" th:field="*{petDiagnosis3}">
+        </div>
+        <div class='wrapper999'>
+          <td th:if="${#fields.hasErrors('petName3')}" th:errors="*{petName3}">Введите имя русскими буквами</td>
+       <td th:if="${#fields.hasErrors('petAge3')}" th:errors="*{petAge3}">Возраст должен быть больше 0</td>   
+         </div>    
+        <p><button type="submit">Submit</button></p>
+        </div>
+        
+</form>
+            </div>
+    </body>
+   <script language="javascript">
+        function addRecord() {
+            var petOwner = document.getElementById("petOwner").value;
+            var ownerPhone = document.getElementById("ownerPhone").value;
+            var petName1 = document.getElementById("petName1").value;
+            var petAge1 = document.getElementById("petAge1").value;
+            var petName2 = document.getElementById("petName2").value;
+            var petAge2 = document.getElementById("petAge2").value;
+            var petName3 = document.getElementById("petName3").value;
+            var petAge3 = document.getElementById("petAge3").value;
+            var petName4 = document.getElementById("petName4").value;
+            var petAge4 = document.getElementById("petAge4").value;
+             var petName5 = document.getElementById("petName5").value;
+            var petAge5 = document.getElementById("petAge5").value;
+            
+            var c = petName1+" "+petName2+" "+petName3+" "+petName4+" "+petName5+" "+petOwner;
+             if(/^[А-Яа-яЁё\s-*]+$/.test(petOwner)===false){ 
+                 alert("Введите имя русскими буквами"); return false;}
+              if(/^\+?\d{1}[-]?\d{3}[-]?\d{3}[-]?\d{2}[-]?\d{2}$/.test(ownerPhone)===false){ 
+                 alert("Телефон должен состоять из 11 цифр"); return false;}
+             if(/^[А-Яа-яЁё\s-*]*$/.test(petName1)===false){ 
+                 alert("Введите имя русскими буквами"); return false;}
+             if((/(1-9)?(0-9)*/.test(petAge1)===false)&&petAge1<1)
+             { alert("Введите число большее 0"); return false;}
+             if(/^[А-Яа-яЁё\s-*]*$/.test(petName2)===false){ 
+                 alert("Введите имя русскими буквами"); return false;}
+             if((/(1-9)?(0-9)*/.test(petAge2)===false)&&petAge2<1)
+             { alert("Введите число большее 0"); return false;}
+             if(/^[А-Яа-яЁё\s-*]*$/.test(petName3)===false){ 
+                 alert("Введите имя русскими буквами"); return false;}
+             if((/(1-9)?(0-9)*/.test(petAge3)===false)&&petAge3<1)
+             { alert("Введите число большее 0"); return false;}
+             if(/^[А-Яа-яЁё\s-*]*$/.test(petName4)===false){ 
+                 alert("Введите имя русскими буквами"); return false;}
+             if((/(1-9)?(0-9)*/.test(petAge4)===false)&&petAge4<1)
+             { alert("Введите число большее 0"); return false;}
+             if(/^[А-Яа-яЁё\s-*]*$/.test(petName5)===false){ 
+                 alert("Введите имя русскими буквами"); return false;}
+             if((/(1-9)?(0-9)*/.test(petAge5)===false)&&petAge5<1)
+             { alert("Введите число большее 0"); return false;}
+            
+            if (confirm('Add this?' + c)) {
+                return true;
+            } else {
+return false;
+            }
+             }
+    </script>
+</html>

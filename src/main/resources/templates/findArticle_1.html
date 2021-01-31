@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+.id {
+    float: left;  
+     line-height: 30px;/*Высота строки +  верт. центрирования текста*/
+     font-size: 15px;
+     background: dodgerblue;
+     color: white;
+     margin-top: 10px;
+     width: 320px; /*Фиксируем ширину блока*/
+     margin-right: 10px;
+     text-align: center; /*Центрируем текст по горизонтали*/
+}
+.id2 {
+    line-height: 30px;/*Высота строки +  верт. центрирования текста*/
+     font-size: 15px;
+     background: dodgerblue;
+     color: white;
+     margin-top: 10px;
+     width: 320px; /*Фиксируем ширину блока*/
+     margin-right: 10px;
+     text-align: center; 
+     display: inline-block;
+     float: left;
+}
+.id3 {
+    line-height: 30px;/*Высота строки +  верт. центрирования текста*/
+     font-size: 15px;
+     background: dodgerblue;
+     color: white;
+     margin-top: 10px;
+     width: 320px; /*Фиксируем ширину блока*/
+     margin-right: 10px;
+     text-align: center; 
+     
+}
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    align-content:stretch;
+}
+.container1 {
+    float: left;
+    clear:both;
+}
+</style>
+<script language="javascript">
+ function somevent(){
+ var id = "iojioj";
+ document.getElementById("ass").innerHTML = "добрый день";
+ }
+</script>    
+    </head>
+    <body>
+       <form action="#" th:action="@{/find}" th:object="${form1}" method="post">
+           <div class="container">
+       <div class="id2">
+        <input type="text" th:field="*{description}" placeholder="Введите ключевые слова для поиска статьи" ></div>
+        <div class="id3"><input type="text" th:field="*{theme}" placeholder="Введите тему статьи" >
+       </div>
+       </div>
+       <div class="id">
+           <p>Введите минимальную дату создания статьи:</p>
+<input id="1" class="center" type="date" th:field="*{minCreateDate}" 
+       placeholder="Введите минимальную дату создания статьи"></div>
+       
+        <div class="id">
+           <p>Введите максимальную дату создания статьи:</p>
+<input id="2" class="center1" type="date" th:field="*{maxCreateDate}" 
+       placeholder="Введите максимальную дату создания статьи">
+       </div>
+<!--<input id="3" class="center2" type="date" th:field="*{specificCreateDate}" 
+       placeholder="Или введите точную дату создания статьи">
+<input id="4" class="center3" type="date" th:field="*{maxChangeDate}" 
+       placeholder="Введите максимальную дату изменения статьи">
+<input id="5" class="center4" type="date" th:field="*{minChangeDate}" 
+       placeholder="Введите минимальную дату изменения статьи">
+<input id="6" class="center5" type="date" th:field="*{specificChangeDate}" 
+       placeholder="Или введите точную дату изменения статьи">-->
+       <div class="container1"><button type="submit">Submit</button></div>
+        <p  th:errors="*{MaxCreateDate}" style="color:Tomato;">введите что-то одно </p>
+       </form>
+        <ul th:each="article : ${ff}">
+               <li th:text="${article.description}"></li>
+           </ul>
+        <button onclick="somevent()">press</button>
+        <p id="ass"></p>
+    </body>
+</html>
