@@ -16,23 +16,23 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+//@SpringBootTest
 @EnableJpaRepositories
 @AutoConfigureTestEntityManager
 public class BasicApplicationTests {
    @Autowired
    ArticleRepository arep;
-	@Test
-        @Disabled
-	public void contextLoads() {
-            arep.saveItem(new Date(), "кое-что про Джаву", new Date(), null, "JavaSE", "джава");
-	}
-        @Test
-        @Disabled
-        public void findByDescription(){
-            List<Article> list = arep.findByDescription("джав");
-            assertEquals(list.get(list.size()-1).getDescription(), "кое-что про Джаву");
-        }
+//	@Test
+//        @Disabled
+//	public void contextLoads() {
+//            arep.saveItem(new Date(), "кое-что про Джаву", new Date(), null, "JavaSE", "джава");
+//	}
+//        @Test
+//        @Disabled
+//        public void findByDescription(){
+//            List<Article> list = arep.findByDescription("джав");
+//            assertEquals(list.get(list.size()-1).getDescription(), "кое-что про Джаву");
+//        }
 //        @Test
 //        @Disabled
 //        public void findByDescriptionAndTheme(){
