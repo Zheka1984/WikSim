@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:th="http://www.thymeleaf.org">
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form action="#" th:action="@{/findFiles}" method="post">
+            <p><button type="submit">Submit</button></p>
+        </form> 
+        <ul th:each="file : ${list}">
+            <li><a th:text="${file.fileName}" th:href="@{|/getFile${file.id}|}">terrible</a></li>
+           </ul>
+        
+    </body>
+</html>

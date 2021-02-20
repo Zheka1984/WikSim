@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form th:action="@{/enter}" th:object="${form}" method="POST">
+            <td><textarea th:field="*{description}" placeholder="Введите текст статьи" required></textarea></td>
+             <td><input type="text" th:field="*{header}" placeholder="Введите название статьи" required></td>
+            <p><select size="3" th:name="theme">
+    <option disabled>Выберите тему поста</option>
+    <option selected value="JavaSE">JavaSE</option>
+    <option value="Spring Boot">Spring Boot</option>
+   </select></p>
+             <button type="submit">Submit</button>
+        </form>
+        <p th:text="${createdate}"></p>
+    </body>
+</html>
