@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.json.*;
+import org.springframework.security.oauth2.provider.OAuth2Authentication;
 
 /**
  *
@@ -131,7 +132,9 @@ result.getAllErrors().forEach((t) -> {
     }
    
     @GetMapping("/findArticle{id}")
-    String findById(@PathVariable("id") int id, Model model, @ModelAttribute("form1")FindForm form){
+    String findById(@PathVariable("id") int id, Model model, @ModelAttribute("form1")FindForm form,
+    OAuth2Authentication authentication){
+    
     Article article = arep.findById(new Long(id)).get();
     Article article1 = arep.findById(new Long(id)).get();
     System.out.println(article.getId());

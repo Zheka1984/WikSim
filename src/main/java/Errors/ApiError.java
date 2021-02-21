@@ -85,7 +85,7 @@ class ApiError {
         this.debugMessage = ex.getLocalizedMessage();
     }
 
-    private void addSubError(ApiSubError subError) {
+    private void addSubError(ApiValidationError subError) {
         if (subErrors == null) {
             subErrors = new ArrayList<>();
         }
@@ -145,7 +145,7 @@ class ApiError {
     }
 
     @Data
-    @EqualsAndHashCode
+    @EqualsAndHashCode(callSuper=false)
     @AllArgsConstructor
     class ApiValidationError extends ApiSubError {
         private String object;
@@ -158,9 +158,9 @@ class ApiError {
             this.message = message;
         }
 
-        private ApiValidationError(String object, String field, Object rejectedValue, String message) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        }
+//        private ApiValidationError(String object, String field, Object rejectedValue, String message) {
+//            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        }
     }
 }
 

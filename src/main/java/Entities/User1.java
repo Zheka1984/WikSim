@@ -5,11 +5,17 @@
  */
 package Entities;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.io.Serializable;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import java.util.Collection;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 /**
  *
  * @author nalog_ot01
@@ -19,7 +25,7 @@ import java.util.Collection;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(uniqueConstraints = {@UniqueConstraint(columnNames = "email")})
-public class User {
+public class User1 implements Serializable {
 
     public enum Role {USER, ADMIN, USER_MANAGER}
 
@@ -35,9 +41,9 @@ public class User {
     @NotNull
     @Enumerated(EnumType.STRING)
     private Role role;
-    private Double minGleePerDay;
-    @JsonIgnore
-    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, orphanRemoval = true)
-    @ToString.Exclude
-    private Collection<Glee> glee;
+//    private Double minGleePerDay;
+//    @JsonIgnore
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE, orphanRemoval = true)
+//    @ToString.Exclude
+//    private Collection<Glee> glee;
 }

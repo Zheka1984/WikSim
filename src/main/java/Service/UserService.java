@@ -5,8 +5,10 @@
  */
 package Service;
 
+import Entities.User1;
 import Repository.UserRepository;
 import java.util.Arrays;
+import java.util.function.Supplier;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -29,8 +31,8 @@ public class UserService implements UserDetailsService {
 
    @Override
    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-       User user = repository.findByEmail(username).orElseThrow(() -> new RuntimeException("User not found: " + username));
-       GrantedAuthority authority = new SimpleGrantedAuthority(user.getRole().name());
-       return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), Arrays.asList(authority));
+      User1 user = repository.findByEmail(username).orElseThrow(() -> new RuntimeException("User not found: " + username));
+        GrantedAuthority authority = new SimpleGrantedAuthority(user.getRole().name());
+        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), Arrays.asList(authority));
    }
 }
