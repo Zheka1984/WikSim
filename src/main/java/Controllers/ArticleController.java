@@ -24,6 +24,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.json.*;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
 
 /**
@@ -36,6 +38,7 @@ public class ArticleController {
 private DataSource dataSource;  
     @Autowired
     ArticleRepository arep;
+    SecurityContext securityContext = SecurityContextHolder.getContext();
     @GetMapping("/add")
   public String enter(Model model) {
       Article form = new Article();

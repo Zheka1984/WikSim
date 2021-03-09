@@ -22,10 +22,19 @@ import lombok.ToString;
  */
 @Data
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
-@Table(uniqueConstraints = {@UniqueConstraint(columnNames = "email")})
+@Table(name="user1", uniqueConstraints = {@UniqueConstraint(columnNames = "email")})
 public class User1 implements Serializable {
+
+    public User1() {
+    }
+
+    public User1(Long id, String email, String password, Role role) {
+        this.id = id;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
+    
 
     public enum Role {USER, ADMIN, USER_MANAGER}
 
